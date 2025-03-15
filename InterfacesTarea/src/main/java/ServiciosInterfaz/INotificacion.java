@@ -9,7 +9,7 @@ public interface INotificacion <T> {
     public class CorreoElectronico implements INotificacion<String> {
     @Override
     public String enviarNotificacion() {
-        return "hey bro, tu tiene una notificacion de correo electrónico.";
+        return "hey bro, tu tiene una notificacion de correo electronico.";
         }
     }
     

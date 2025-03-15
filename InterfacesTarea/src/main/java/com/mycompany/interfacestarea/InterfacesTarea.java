@@ -17,6 +17,7 @@ import ServiciosInterfaz.IOrdenar.ListaNumeros;
 import ServiciosInterfaz.ITrabajador;
 import ServiciosInterfaz.ITrabajador.Desarrollador;
 import ServiciosInterfaz.ITrabajador.Diseñador;
+import ServiciosInterfaz.IcomparacionObjeto.Producto;
 import ServiciosInterfaz.Ipago;
 import ServiciosInterfaz.Ipago.PagoConEfectivo;
 import ServiciosInterfaz.Ipago.PagoConTarjeta;
@@ -25,6 +26,7 @@ import ServiciosInterfaz.Ivehiculo.Bicicleta;
 import ServiciosInterfaz.Ivehiculo.Coche;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -129,6 +131,31 @@ public class InterfacesTarea {
         System.out.println("SMS: " + sms.enviarNotificacion());
 
     }
+      // Metodo para probar IcomparacionObjeto
+      public static void Comparacion() {
+        // primero creamos la lista del producto
+        List<Producto> productos = new ArrayList<>();
+        productos.add(new Producto(29.99));
+        productos.add(new Producto(19.99));
+        productos.add(new Producto(49.99));
+        productos.add(new Producto(9.99));
+
+        // los mostramos para luego hacer la comparaicon
+        System.out.println("Productos antes de ordenar:");
+        for (Producto producto : productos) {
+            System.out.println(producto);
+        }
+
+        // Ordenamos los productos usando Sort
+        Collections.sort(productos, (p1, p2) -> p1.comparar(p2));
+
+        // y los mostramos ahora haciendo la comparacion
+        System.out.println("\nProductos después de ordenar:");
+        for (Producto producto : productos) {
+            System.out.println(producto);
+        }
+    }
+      
     
 
     // Método principal
@@ -156,6 +183,10 @@ public class InterfacesTarea {
         
         System.out.println("\nPruebas de interfaz INotificacion:");
         Notificacion();
+        
+         System.out.println("\nPruebas de interfaz IcomparacionObjeto:");
+        Comparacion();
+        
         
         
         
