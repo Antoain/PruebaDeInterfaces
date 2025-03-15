@@ -6,6 +6,9 @@ import ServiciosInterfaz.IAlimentacion.Persona;
 import ServiciosInterfaz.IAnimal;
 import ServiciosInterfaz.IAnimal.Gato;
 import ServiciosInterfaz.IAnimal.Perro;
+import ServiciosInterfaz.IDescontar;
+import ServiciosInterfaz.IDescontar.DescuentoFijo;
+import ServiciosInterfaz.IDescontar.DescuentoPorcentaje;
 import ServiciosInterfaz.IFigGeometrica;
 import ServiciosInterfaz.IFigGeometrica.Circulo;
 import ServiciosInterfaz.IFigGeometrica.Rectangulo;
@@ -85,7 +88,7 @@ public class InterfacesTarea {
         System.out.println("Perimetro: " + rectangulo.perimetro());
     }
     
-    
+    // Metodo para probar ITrabajador
     public static void trabajacion() {
         //Desarrollador
         ITrabajador<String> desarrollador = new Desarrollador();
@@ -97,7 +100,7 @@ public class InterfacesTarea {
 
         
     }
-    
+    // Metodo para probar IOrdenar
      public static void ListaNumeros() {
         
         IOrdenar<Integer> listaNumeros = new ListaNumeros();
@@ -106,7 +109,7 @@ public class InterfacesTarea {
         listaNumeros.ordenar(numeros);
      }
      
-     
+     // Metodo para probar IAlimentacion
      public static void Comer() {
         // Persona
         IAlimentacion<String> persona = new Persona();
@@ -120,7 +123,7 @@ public class InterfacesTarea {
         
     }
      
-     
+     // Metodo para probar INotificacion
       public static void Notificacion() {
         // Prueba con Correo Electrónico
         INotificacion<String> correo = new CorreoElectronico();
@@ -150,10 +153,28 @@ public class InterfacesTarea {
         Collections.sort(productos, (p1, p2) -> p1.comparar(p2));
 
         // y los mostramos ahora haciendo la comparacion
-        System.out.println("\nProductos después de ordenar:");
+        System.out.println("\nProductos ordenados:");
         for (Producto producto : productos) {
             System.out.println(producto);
         }
+    }
+      
+      // Metodo para probar IDescontar
+      public static void CalcDescuento() {
+        // Usando descuento por porcentaje
+        IDescontar<Double> descuentoPorcentaje = new DescuentoPorcentaje(15.0); 
+        Double precioOriginal = 200.00;
+        Double descuentoAplicado = descuentoPorcentaje.calcularDescuento(precioOriginal);
+        System.out.println("Precio original: $" + precioOriginal);
+        System.out.println("Descuento (15%): $" + descuentoAplicado);
+        System.out.println("Precio final: $" + (precioOriginal - descuentoAplicado));
+
+        // Usando descuento fijo
+        IDescontar<Double> descuentoFijo = new DescuentoFijo(20.00); 
+        descuentoAplicado = descuentoFijo.calcularDescuento(precioOriginal);
+        System.out.println("\nPrecio original: $" + precioOriginal);
+        System.out.println("Descuento fijo: $" + descuentoAplicado);
+        System.out.println("Precio final: $" + (precioOriginal - descuentoAplicado));
     }
       
     
@@ -187,10 +208,9 @@ public class InterfacesTarea {
          System.out.println("\nPruebas de interfaz IcomparacionObjeto:");
         Comparacion();
         
+        System.out.println("\nPruebas de interfaz IDescontar:");
+        CalcDescuento();
         
-        
-        
-        
-        
+
     }
 }
