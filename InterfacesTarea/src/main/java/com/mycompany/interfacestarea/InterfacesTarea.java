@@ -3,6 +3,12 @@ package com.mycompany.interfacestarea;
 import ServiciosInterfaz.IAnimal;
 import ServiciosInterfaz.IAnimal.Gato;
 import ServiciosInterfaz.IAnimal.Perro;
+import ServiciosInterfaz.IFigGeometrica;
+import ServiciosInterfaz.IFigGeometrica.Circulo;
+import ServiciosInterfaz.IFigGeometrica.Rectangulo;
+import ServiciosInterfaz.Ipago;
+import ServiciosInterfaz.Ipago.PagoConEfectivo;
+import ServiciosInterfaz.Ipago.PagoConTarjeta;
 import ServiciosInterfaz.Ivehiculo;
 import ServiciosInterfaz.Ivehiculo.Bicicleta;
 import ServiciosInterfaz.Ivehiculo.Coche;
@@ -32,12 +38,51 @@ public class InterfacesTarea {
         System.out.println(bicicleta.detener());
     }
     
-        // Método principal
+    // Metodo para probar Ipago
+    public static void pago() {
+        // Pago en efectivo
+        Ipago<Double> pagoEfectivo = new PagoConEfectivo();
+        Double cantidadEfectivo = pagoEfectivo.procesarPago(200.00);
+        System.out.println("Pago procesado en efectivo: $" + cantidadEfectivo);
+
+        // Pago con tarjeta
+        Ipago<Double> pagoTarjeta = new PagoConTarjeta();
+        Double cantidadTarjeta = pagoTarjeta.procesarPago(150.75);
+        System.out.println("Pago procesado con tarjeta: $" + cantidadTarjeta);
+        
+    }
+    
+    //Metodo para probar IFigGeometrica
+    public static void FigGeometrica() {
+        // Prueba con un círculo
+        IFigGeometrica<Double> circulo = new Circulo(5.0);
+        System.out.println("Círculo:");
+        System.out.println("Área: " + circulo.area());
+        System.out.println("Perímetro: " + circulo.perimetro());
+
+        // Prueba con un rectángulo
+        IFigGeometrica<Double> rectangulo = new Rectangulo(4.0, 7.0);
+        System.out.println("\nRectángulo:");
+        System.out.println("Área: " + rectangulo.area());
+        System.out.println("Perímetro: " + rectangulo.perimetro());
+    }
+    
+    // Método principal
     public static void main(String[] args) {
         System.out.println("Prueba de interfaz IAnimal:");
         Animal();
         
         System.out.println("\nPruebas de interfaz Ivehiculo:");
         Vehiculo();
+        
+        System.out.println("\nPruebas de interfaz Ipago:");
+        pago();
+        
+        System.out.println("\nPruebas de interfaz IFigGeometrica:");
+        FigGeometrica();
+        
+        
+        
+        
     }
 }
