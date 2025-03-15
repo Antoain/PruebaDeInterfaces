@@ -6,6 +6,9 @@ import ServiciosInterfaz.IAnimal.Perro;
 import ServiciosInterfaz.IFigGeometrica;
 import ServiciosInterfaz.IFigGeometrica.Circulo;
 import ServiciosInterfaz.IFigGeometrica.Rectangulo;
+import ServiciosInterfaz.ITrabajador;
+import ServiciosInterfaz.ITrabajador.Desarrollador;
+import ServiciosInterfaz.ITrabajador.Diseñador;
 import ServiciosInterfaz.Ipago;
 import ServiciosInterfaz.Ipago.PagoConEfectivo;
 import ServiciosInterfaz.Ipago.PagoConTarjeta;
@@ -55,16 +58,29 @@ public class InterfacesTarea {
     //Metodo para probar IFigGeometrica
     public static void FigGeometrica() {
         // Prueba con un círculo
-        IFigGeometrica<Double> circulo = new Circulo(5.0);
-        System.out.println("Círculo:");
-        System.out.println("Área: " + circulo.area());
-        System.out.println("Perímetro: " + circulo.perimetro());
+        IFigGeometrica<Double> circulo = new Circulo(8.0);
+        System.out.println("Circulo:");
+        System.out.println("Area: " + circulo.area());
+        System.out.println("Perimetro: " + circulo.perimetro());
 
         // Prueba con un rectángulo
-        IFigGeometrica<Double> rectangulo = new Rectangulo(4.0, 7.0);
+        IFigGeometrica<Double> rectangulo = new Rectangulo(8.0, 7.0);
         System.out.println("\nRectángulo:");
-        System.out.println("Área: " + rectangulo.area());
-        System.out.println("Perímetro: " + rectangulo.perimetro());
+        System.out.println("Area: " + rectangulo.area());
+        System.out.println("Perimetro: " + rectangulo.perimetro());
+    }
+    
+    
+    public static void trabajacion() {
+        // Prueba con Desarrollador
+        ITrabajador<String> desarrollador = new Desarrollador();
+        System.out.println(desarrollador.trabajar());
+
+        // Prueba con Diseñador
+        ITrabajador<String> diseñador = new Diseñador();
+        System.out.println(diseñador.trabajar());
+
+        
     }
     
     // Método principal
@@ -80,6 +96,9 @@ public class InterfacesTarea {
         
         System.out.println("\nPruebas de interfaz IFigGeometrica:");
         FigGeometrica();
+        
+        System.out.println("\nPruebas de interfaz ITrabajar:");
+        trabajacion();
         
         
         
