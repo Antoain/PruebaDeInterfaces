@@ -1,5 +1,8 @@
 
 package com.mycompany.interfacestarea;
+import ServiciosInterfaz.IAlimentacion;
+import ServiciosInterfaz.IAlimentacion.Animal;
+import ServiciosInterfaz.IAlimentacion.Persona;
 import ServiciosInterfaz.IAnimal;
 import ServiciosInterfaz.IAnimal.Gato;
 import ServiciosInterfaz.IAnimal.Perro;
@@ -91,9 +94,23 @@ public class InterfacesTarea {
         
         IOrdenar<Integer> listaNumeros = new ListaNumeros();
         List<Integer> numeros = new ArrayList<>(Arrays.asList(5, 2, 9, 1, 4));
-        System.out.println("Lista original (números): " + numeros);
+        System.out.println("Lista original (numeros): " + numeros);
         listaNumeros.ordenar(numeros);
      }
+     
+     
+     public static void Comer() {
+        // Persona
+        IAlimentacion<String> persona = new Persona();
+        System.out.println("Persona: " + persona.comer());
+
+        // Animalito
+        IAlimentacion<String> animal = new Animal();
+        System.out.println("Animal: " + animal.comer());
+
+        
+        
+    }
     
 
     // Método principal
@@ -115,6 +132,9 @@ public class InterfacesTarea {
         
         System.out.println("\nPruebas de interfaz IOrdenar");
         ListaNumeros();
+        
+        System.out.println("\nPruebas de interfaz IAlimentacion");
+        Comer();
         
         
         
