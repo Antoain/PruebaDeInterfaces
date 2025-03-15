@@ -9,6 +9,9 @@ import ServiciosInterfaz.IAnimal.Perro;
 import ServiciosInterfaz.IFigGeometrica;
 import ServiciosInterfaz.IFigGeometrica.Circulo;
 import ServiciosInterfaz.IFigGeometrica.Rectangulo;
+import ServiciosInterfaz.INotificacion;
+import ServiciosInterfaz.INotificacion.CorreoElectronico;
+import ServiciosInterfaz.INotificacion.SMS;
 import ServiciosInterfaz.IOrdenar;
 import ServiciosInterfaz.IOrdenar.ListaNumeros;
 import ServiciosInterfaz.ITrabajador;
@@ -23,6 +26,9 @@ import ServiciosInterfaz.Ivehiculo.Coche;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+
+
 public class InterfacesTarea {
 
     // Método para probar IAnimal
@@ -111,6 +117,18 @@ public class InterfacesTarea {
         
         
     }
+     
+     
+      public static void Notificacion() {
+        // Prueba con Correo Electrónico
+        INotificacion<String> correo = new CorreoElectronico();
+        System.out.println("Correo: " + correo.enviarNotificacion());
+
+        // Prueba con SMS
+        INotificacion<String> sms = new SMS();
+        System.out.println("SMS: " + sms.enviarNotificacion());
+
+    }
     
 
     // Método principal
@@ -133,8 +151,13 @@ public class InterfacesTarea {
         System.out.println("\nPruebas de interfaz IOrdenar");
         ListaNumeros();
         
-        System.out.println("\nPruebas de interfaz IAlimentacion");
+        System.out.println("\nPruebas de interfaz IAlimentacion:");
         Comer();
+        
+        System.out.println("\nPruebas de interfaz INotificacion:");
+        Notificacion();
+        
+        
         
         
         
